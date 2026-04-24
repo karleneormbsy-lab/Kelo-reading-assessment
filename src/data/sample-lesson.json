@@ -1,0 +1,289 @@
+{
+  "lesson": {
+    "id": "lesson-l2-01",
+    "level_id": 2,
+    "lesson_number": 1,
+    "title": "The /sh/ Sound",
+    "phonogram": "sh",
+    "phonics_rule": "The digraph 'sh' makes one sound: /sh/ as in 'ship'.",
+    "keywords": ["ship", "shop", "shell", "wish", "fish"],
+    "is_reinforcing": false,
+    "mastery_threshold": 80,
+    "estimated_minutes": 30
+  },
+  "steps": [
+    {
+      "id": "step-01",
+      "lesson_id": "lesson-l2-01",
+      "step_number": 1,
+      "step_type": "phonogram_review",
+      "title": "Phonogram Review",
+      "instructions": "Look at each card. Say the sound the letters make. Then flip the card to check.",
+      "points": 10,
+      "content": {
+        "type": "phonogram_review",
+        "flashcards": [
+          {
+            "id": "fc-sh",
+            "grapheme": "sh",
+            "phoneme": "/sh/",
+            "example_word": "ship",
+            "back_text": "Think: shhhh... be quiet!"
+          },
+          {
+            "id": "fc-ch",
+            "grapheme": "ch",
+            "phoneme": "/ch/",
+            "example_word": "chin",
+            "back_text": "Think: a train going ch-ch-ch!"
+          },
+          {
+            "id": "fc-th",
+            "grapheme": "th",
+            "phoneme": "/th/",
+            "example_word": "thin",
+            "back_text": "Stick out your tongue!"
+          },
+          {
+            "id": "fc-wh",
+            "grapheme": "wh",
+            "phoneme": "/wh/",
+            "example_word": "when",
+            "back_text": "Blow a little air!"
+          }
+        ]
+      }
+    },
+    {
+      "id": "step-02",
+      "lesson_id": "lesson-l2-01",
+      "step_number": 2,
+      "step_type": "phonological_awareness",
+      "title": "Phoneme Segmentation",
+      "instructions": "Say each word. Then drag each sound into its own box.",
+      "points": 15,
+      "content": {
+        "type": "phonological_awareness",
+        "activity": "segment",
+        "words": [
+          { "word": "ship", "phonemes": ["sh", "i", "p"], "syllables": ["ship"] },
+          { "word": "shop", "phonemes": ["sh", "o", "p"], "syllables": ["shop"] },
+          { "word": "fish", "phonemes": ["f", "i", "sh"], "syllables": ["fish"] },
+          { "word": "wish", "phonemes": ["w", "i", "sh"], "syllables": ["wish"] },
+          { "word": "shell", "phonemes": ["sh", "e", "ll"], "syllables": ["shell"] }
+        ]
+      }
+    },
+    {
+      "id": "step-03",
+      "lesson_id": "lesson-l2-01",
+      "step_number": 3,
+      "step_type": "word_building",
+      "title": "Word Building",
+      "instructions": "Use the letters to build words. Drag letters into the word frame.",
+      "points": 20,
+      "content": {
+        "type": "word_building",
+        "letter_bank": ["sh", "i", "p", "o", "a", "e", "l", "f", "w", "n"],
+        "target_words": ["ship", "shop", "shell", "fish", "wish", "shin"],
+        "allow_extra": false
+      }
+    },
+    {
+      "id": "step-04",
+      "lesson_id": "lesson-l2-01",
+      "step_number": 4,
+      "step_type": "decoding",
+      "title": "Decoding Practice",
+      "instructions": "Read each word aloud. Then read the sentences.",
+      "points": 15,
+      "content": {
+        "type": "decoding",
+        "word_columns": [
+          ["ship", "shop", "shed", "shin", "shell"],
+          ["fish", "wish", "dish", "rush", "brush"],
+          ["fresh", "flash", "crash", "slash", "splash"]
+        ],
+        "sentences": [
+          "The fish is in the dish.",
+          "I wish I had a ship.",
+          "She ran to the shop.",
+          "The shell is on the shelf."
+        ]
+      }
+    },
+    {
+      "id": "step-05",
+      "lesson_id": "lesson-l2-01",
+      "step_number": 5,
+      "step_type": "pre_reading",
+      "title": "Vocabulary Preview",
+      "instructions": "Read each word. Look at the picture. Say the sentence.",
+      "points": 10,
+      "content": {
+        "type": "pre_reading",
+        "vocabulary": [
+          {
+            "word": "shore",
+            "definition": "The land at the edge of an ocean or lake",
+            "sentence": "The family walked along the shore."
+          },
+          {
+            "word": "crash",
+            "definition": "To break apart with a loud noise",
+            "sentence": "The waves crash on the rocks."
+          },
+          {
+            "word": "fresh",
+            "definition": "New, clean, or just made",
+            "sentence": "The fish smelled fresh from the sea."
+          }
+        ]
+      }
+    },
+    {
+      "id": "step-06",
+      "lesson_id": "lesson-l2-01",
+      "step_number": 6,
+      "step_type": "reading_passage",
+      "title": "Reading Passage",
+      "instructions": "Read the story. Words with 'sh' are highlighted. Then answer the questions.",
+      "points": 30,
+      "content": {
+        "type": "reading_passage",
+        "passage_id": "passage-l2-01",
+        "title": "A Day at the Shore",
+        "highlight_phonogram": "sh",
+        "body": "It was a fresh morning at the shore. Shelly and her dad went fishing on their small ship. The sun lit up the shells on the sand. A big fish splashed in the water. Shelly made a wish. She wished she could catch the fish. She cast her rod with a big whoosh! The fish flashed in the net. Dad gave a shout. Shelly had caught her wish!",
+        "questions": [
+          {
+            "id": "q1",
+            "question": "Where did Shelly and her dad go?",
+            "question_type": "multiple_choice",
+            "options": [
+              { "text": "To the park", "is_correct": false },
+              { "text": "To the shore", "is_correct": true },
+              { "text": "To the store", "is_correct": false },
+              { "text": "To school", "is_correct": false }
+            ]
+          },
+          {
+            "id": "q2",
+            "question": "What did Shelly wish for?",
+            "question_type": "multiple_choice",
+            "options": [
+              { "text": "A new ship", "is_correct": false },
+              { "text": "A big shell", "is_correct": false },
+              { "text": "To catch the fish", "is_correct": true },
+              { "text": "To go home", "is_correct": false }
+            ]
+          },
+          {
+            "id": "q3",
+            "question": "Shelly and her dad went fishing.",
+            "question_type": "true_false",
+            "options": [
+              { "text": "True", "is_correct": true },
+              { "text": "False", "is_correct": false }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "step-07",
+      "lesson_id": "lesson-l2-01",
+      "step_number": 7,
+      "step_type": "sound_dictation",
+      "title": "Sound Dictation",
+      "instructions": "Listen to the sound. Type the letters that make that sound.",
+      "points": 15,
+      "content": {
+        "type": "sound_dictation",
+        "items": [
+          { "prompt": "What letters make the /sh/ sound?", "answer": "sh" },
+          { "prompt": "What letters make the /ch/ sound?", "answer": "ch" },
+          { "prompt": "What letters make the /th/ sound?", "answer": "th" },
+          { "prompt": "What letters make the /wh/ sound?", "answer": "wh" }
+        ]
+      }
+    },
+    {
+      "id": "step-08",
+      "lesson_id": "lesson-l2-01",
+      "step_number": 8,
+      "step_type": "pre_spelling",
+      "title": "Pre-Spelling Practice",
+      "instructions": "Tap the sounds you hear. Then write the word.",
+      "points": 10,
+      "content": {
+        "type": "pre_spelling",
+        "items": [
+          { "prompt": "ship", "answer": "ship", "hint": "3 sounds: /sh/ /i/ /p/" },
+          { "prompt": "fish", "answer": "fish", "hint": "3 sounds: /f/ /i/ /sh/" },
+          { "prompt": "shell", "answer": "shell", "hint": "3 sounds: /sh/ /e/ /ll/" }
+        ]
+      }
+    },
+    {
+      "id": "step-09",
+      "lesson_id": "lesson-l2-01",
+      "step_number": 9,
+      "step_type": "spelling",
+      "title": "Spelling",
+      "instructions": "Listen to each word. Spell it correctly.",
+      "points": 25,
+      "content": {
+        "type": "spelling",
+        "words": [
+          { "word": "ship",  "phonogram": "sh", "use_in_sentence": "The ship sailed on the sea." },
+          { "word": "shop",  "phonogram": "sh", "use_in_sentence": "We went to the shop." },
+          { "word": "fish",  "phonogram": "sh", "use_in_sentence": "I caught a big fish." },
+          { "word": "wish",  "phonogram": "sh", "use_in_sentence": "Make a wish!" },
+          { "word": "shell", "phonogram": "sh", "use_in_sentence": "Pick up that shell." },
+          { "word": "fresh", "phonogram": "sh", "use_in_sentence": "The air smells fresh." }
+        ]
+      }
+    },
+    {
+      "id": "step-10",
+      "lesson_id": "lesson-l2-01",
+      "step_number": 10,
+      "step_type": "sentence_dictation",
+      "title": "Sentence Dictation",
+      "instructions": "Listen to the sentence. Type it exactly as you hear it.",
+      "points": 20,
+      "content": {
+        "type": "sentence_dictation",
+        "items": [
+          {
+            "prompt": "The fish is in the dish.",
+            "answer": "The fish is in the dish.",
+            "hint": "5 words, starts with The"
+          },
+          {
+            "prompt": "She ran to the shop on the hill.",
+            "answer": "She ran to the shop on the hill.",
+            "hint": "8 words, starts with She"
+          }
+        ]
+      }
+    }
+  ],
+  "word_lists": {
+    "phonogram": [
+      { "word": "ship" }, { "word": "shop" }, { "word": "shed" },
+      { "word": "shin" }, { "word": "shell" }, { "word": "shelf" },
+      { "word": "fish" }, { "word": "wish" }, { "word": "dish" },
+      { "word": "rush" }, { "word": "fresh" }, { "word": "brush" }
+    ],
+    "sight": [
+      { "word": "the" }, { "word": "a" }, { "word": "she" },
+      { "word": "her" }, { "word": "was" }, { "word": "went" }
+    ],
+    "spelling": [
+      { "word": "ship" }, { "word": "shop" }, { "word": "fish" },
+      { "word": "wish" }, { "word": "shell" }, { "word": "fresh" }
+    ]
+  }
+}

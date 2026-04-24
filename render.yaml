@@ -1,0 +1,23 @@
+# Render deployment config
+# This file covers the Next.js frontend (also deploy to Vercel — see below)
+# For backend API routes, Next.js handles them natively via /api
+
+services:
+  - type: web
+    name: readsmart-app
+    runtime: node
+    region: oregon
+    plan: free
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: NEXT_PUBLIC_SUPABASE_URL
+        sync: false
+      - key: NEXT_PUBLIC_SUPABASE_ANON_KEY
+        sync: false
+      - key: SUPABASE_SERVICE_ROLE_KEY
+        sync: false
+      - key: OPENAI_API_KEY
+        sync: false
