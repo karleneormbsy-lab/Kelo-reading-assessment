@@ -89,13 +89,6 @@ export async function GET(req: NextRequest) {
     } catch { /* fall through */ }
   }
 
-  // 4. Fallback — Unsplash Source (no-auth, random relevant image)
-  const fallbackUrl = `https://source.unsplash.com/200x200/?${encodeURIComponent(word)}`
-  return NextResponse.json({
-    url:    fallbackUrl,
-    alt:    word,
-    credit: 'Unsplash',
-  }, {
-    headers: { 'Cache-Control': 'public, max-age=3600' },
-  })
+  // 4. No image found — return empty so the UI shows the emoji placeholder
+  return NextResponse.json({ url: null, alt: word }, { status: 404 })
 }
