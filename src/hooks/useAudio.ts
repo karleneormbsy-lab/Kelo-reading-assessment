@@ -111,8 +111,7 @@ export function useAudio(options: UseAudioOptions = {}) {
   const speakPhoneme = useCallback((phoneme: string) => {
     if (typeof window === 'undefined') return
     window.speechSynthesis.cancel()
-    // Spell out letter names for single letters, say the sound for digraphs
-    const utt  = new SpeechSynthesisUtterance(phoneme)
+    const utt  = new SpeechSynthesisUtterance(phoneme.replace(/\//g, ''))
     utt.rate   = 0.5
     utt.pitch  = 1.1
     utt.lang   = 'en-US'
