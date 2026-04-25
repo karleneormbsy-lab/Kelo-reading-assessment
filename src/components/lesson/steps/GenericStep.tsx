@@ -112,7 +112,14 @@ export default function GenericStep({ step, onComplete }: Props) {
               <div className="flex items-center gap-3 mb-3">
                 <span className="text-gray-500 text-sm font-medium">{i + 1}.</span>
                 <button
-                  onClick={() => speak(item.prompt)}
+                  onClick={() => {
+                    // For sound dictation: speak the phoneme sound (the answer).
+                    // For sentence/spelling dictation: read the prompt text, stripping slashes.
+                    const toSpeak = content.type === 'sound_dictation'
+                      ? item.answer.replace(/\//g, '')
+                      : item.prompt.replace(/\//g, '')
+                    speak(toSpeak)
+                  }}
                   className="flex items-center gap-2 px-3 py-1.5 bg-blue-100 hover:bg-blue-200 text-blue-700 rounded-full text-sm font-medium transition-colors"
                 >
                   <Volume2 className="w-4 h-4" /> Play
