@@ -16,6 +16,7 @@ export default function GenericStep({ step, onComplete }: Props) {
   const content = step.content
 
   const speak = (text: string) => {
+    window.speechSynthesis.cancel()
     const utt = new SpeechSynthesisUtterance(text)
     utt.rate  = 0.85
     window.speechSynthesis.speak(utt)
