@@ -1,7 +1,6 @@
 'use client'
 
 import { useState, useCallback } from 'react'
-import Image from 'next/image'
 import { motion, AnimatePresence } from 'framer-motion'
 import { ChevronRight, ChevronLeft, Check, Volume2 } from 'lucide-react'
 import { useAudio } from '@/hooks/useAudio'
@@ -29,7 +28,8 @@ function FlashcardBack({ card }: { card: Flashcard }) {
           </div>
         )}
         {image && !loading && (
-          <Image src={image.url} alt={card.example_word} fill className="object-cover" unoptimized />
+          // eslint-disable-next-line @next/next/no-img-element
+          <img src={image.url} alt={card.example_word} className="w-full h-full object-cover" />
         )}
         {!image && !loading && (
           <div className="absolute inset-0 flex items-center justify-center text-2xl">🖼️</div>

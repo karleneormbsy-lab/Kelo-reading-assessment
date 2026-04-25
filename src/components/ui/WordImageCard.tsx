@@ -1,6 +1,5 @@
 'use client'
 
-import Image from 'next/image'
 import { Volume2 } from 'lucide-react'
 import { useWordImage } from '@/hooks/useWordImage'
 import { useAudio } from '@/hooks/useAudio'
@@ -64,13 +63,8 @@ export default function WordImageCard({
           </div>
         )}
         {image && !loading && (
-          <Image
-            src={image.url}
-            alt={image.alt}
-            fill
-            className="object-cover"
-            unoptimized
-          />
+          // eslint-disable-next-line @next/next/no-img-element
+          <img src={image.url} alt={image.alt} className="w-full h-full object-cover" />
         )}
         {!image && !loading && (
           <div className="absolute inset-0 flex items-center justify-center text-3xl">
