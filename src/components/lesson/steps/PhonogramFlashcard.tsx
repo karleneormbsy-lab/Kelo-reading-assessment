@@ -4,6 +4,7 @@ import { useState, useCallback } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { ChevronRight, ChevronLeft, Check, Volume2 } from 'lucide-react'
 import { useAudio } from '@/hooks/useAudio'
+import { hasLetterSound } from '@/lib/letterSounds'
 import { useWordImage } from '@/hooks/useWordImage'
 import ELLAudioToolbar from '@/components/ui/ELLAudioToolbar'
 import type { PhonogramReviewContent, Flashcard } from '@/types'
@@ -50,14 +51,14 @@ export default function PhonogramFlashcard({ content, onComplete }: Props) {
   const [known, setKnown]               = useState<Set<string>>(new Set())
   const [showSummary, setShowSummary]   = useState(false)
 
-  const { speak, speakPhoneme, speaking, speed, setSpeed, stop } = useAudio({ speed: 'slow' })
+  const { speak, playLetterSound, speaking, speed, setSpeed, stop } = useAudio({ speed: 'slow' })
 
   const card  = content.flashcards[currentIndex]
   const total = content.flashcards.length
 
   const handleFlip = () => {
     setIsFlipped(f => !f)
-    if (!isFlipped) speakPhoneme(card.phoneme)
+    if (!isFlipped) playLetterSound(card.grapheme)
   }
 
   const navigate = (dir: 'next' | 'prev') => {
@@ -132,7 +133,14 @@ export default function PhonogramFlashcard({ content, onComplete }: Props) {
             className="absolute inset-0 flex flex-col items-center justify-center rounded-3xl shadow-xl bg-gradient-to-br from-brand-500 to-brand-700 text-white"
             style={{ backfaceVisibility: 'hidden' }}
           >
-            <p className="text-7xl font-display font-black">{card.grapheme}</p>
+            {hasLetterSound(card.grapheme) && (
+              <span className="absolute top-3 right-3 bg-white/20 rounded-full px-2 py-0.5 text-xs flex items-center gap-1">
+                <Volume2 className="w-3 h-3" /> recorded
+              </span>
+            )}
+            <p className="text-7xl font-display font-black">
+              {card.grapheme.replace(/_e\b/g, '•e')}
+            </p>
             <p className="mt-2 text-brand-200 text-sm">Tap to hear the sound</p>
           </div>
 
@@ -146,7 +154,11 @@ export default function PhonogramFlashcard({ content, onComplete }: Props) {
         <button onClick={() => navigate('prev')} disabled={currentIndex === 0} className="p-3 rounded-full bg-gray-100 hover:bg-gray-200 disabled:opacity-30 transition-colors">
           <ChevronLeft className="w-5 h-5" />
         </button>
-        <button onClick={() => speak(card.example_word)} className="p-3 rounded-full bg-blue-100 hover:bg-blue-200 text-blue-700 transition-colors">
+        <button
+          onClick={() => playLetterSound(card.grapheme)}
+          title="Hear the letter sound"
+          className="p-3 rounded-full bg-blue-100 hover:bg-blue-200 text-blue-700 transition-colors"
+        >
           <Volume2 className="w-5 h-5" />
         </button>
         <button onClick={markKnown} className="flex items-center gap-2 px-5 py-2 bg-green-500 hover:bg-green-600 text-white rounded-full font-bold transition-colors">

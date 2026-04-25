@@ -34,6 +34,16 @@ module.exports = {
           purple: '#a855f7',
           orange: '#f97316',
         },
+        // Kelo Quest brand palette
+        kelo: {
+          blue:   '#1E88E5',
+          gold:   '#FFC107',
+          red:    '#E53935',
+          green:  '#4CAF50',
+          purple: '#7E57C2',
+          navy:   '#1a2744',
+          ocean:  '#0f3460',
+        },
       },
       fontFamily: {
         display: ['Nunito', 'sans-serif'],
@@ -43,9 +53,12 @@ module.exports = {
         'cream-gradient': 'linear-gradient(135deg, #fef9e7 0%, #fdf0c2 50%, #fef9e7 100%)',
       },
       animation: {
-        'bounce-slow': 'bounce 2s infinite',
-        'flip':        'flip 0.5s ease-in-out',
-        'pop':         'pop 0.3s ease-out',
+        'bounce-slow':    'bounce 2s infinite',
+        'flip':           'flip 0.5s ease-in-out',
+        'pop':            'pop 0.3s ease-out',
+        'bounce-gentle':  'bounce-gentle 2.5s ease-in-out infinite',
+        'pulse-glow':     'pulse-glow 2s ease-in-out infinite',
+        'float':          'float 3s ease-in-out infinite',
       },
       keyframes: {
         flip: {
@@ -55,6 +68,18 @@ module.exports = {
         pop: {
           '0%':   { transform: 'scale(0.8)', opacity: '0' },
           '100%': { transform: 'scale(1)',   opacity: '1' },
+        },
+        'bounce-gentle': {
+          '0%, 100%': { transform: 'translateY(0)' },
+          '50%':       { transform: 'translateY(-6px)' },
+        },
+        'pulse-glow': {
+          '0%, 100%': { boxShadow: '0 0 5px rgba(255, 193, 7, 0.4)' },
+          '50%':      { boxShadow: '0 0 20px rgba(255, 193, 7, 0.8)' },
+        },
+        float: {
+          '0%, 100%': { transform: 'translateY(0px)' },
+          '50%':      { transform: 'translateY(-8px)' },
         },
       },
     },

@@ -1,6 +1,7 @@
 'use client'
 
 import { useCallback, useRef, useState } from 'react'
+import { getLetterSoundPath } from '@/lib/letterSounds'
 
 export type AudioSpeed = 'slow' | 'normal' | 'fast'
 
@@ -111,18 +112,56 @@ export function useAudio(options: UseAudioOptions = {}) {
   const speakPhoneme = useCallback((phoneme: string) => {
     if (typeof window === 'undefined') return
     window.speechSynthesis.cancel()
-    const utt  = new SpeechSynthesisUtterance(phoneme.replace(/\//g, ''))
+
+    // Handle silent-e patterns like a_e, i_e, o_e, u_e
+    const silentEMap: Record<string, string> = {
+      'a_e': 'long a', 'i_e': 'long i', 'o_e': 'long o',
+      'u_e': 'long u', 'e_e': 'long e',
+    }
+    const clean = phoneme.replace(/\//g, '').trim()
+    const text  = silentEMap[clean] ?? clean.replace(/_/g, ' ')
+
+    const utt  = new SpeechSynthesisUtterance(text)
     utt.rate   = 0.5
     utt.pitch  = 1.1
     utt.lang   = 'en-US'
     window.speechSynthesis.speak(utt)
   }, [])
 
+  // ── Play real recorded letter sound (MP3), fall back to speakPhoneme ──
+  const playLetterSound = useCallback((grapheme: string, onEnd?: () => void) => {
+    if (typeof window === 'undefined') return
+    const path = getLetterSoundPath(grapheme)
+    if (path) {
+      // Stop any current speech
+      window.speechSynthesis.cancel()
+      audioRef.current?.pause()
+      const audio = new Audio(path)
+      audioRef.current = audio
+      audio.onplay  = () => setSpeaking(true)
+      audio.onended = () => { setSpeaking(false); onEnd?.() }
+      audio.onerror = () => {
+        // File not found or can't play — fall back to TTS
+        setSpeaking(false)
+        speakPhoneme(grapheme)
+        onEnd?.()
+      }
+      audio.play().catch(() => {
+        speakPhoneme(grapheme)
+        onEnd?.()
+      })
+    } else {
+      // No recorded file — use Web Speech API
+      speakPhoneme(grapheme)
+    }
+  }, [speakPhoneme])
+
   return {
     speak,
     speakWithHighlight,
     speakOpenAI,
     speakPhoneme,
+    playLetterSound,
     stop,
     speaking,
     speed,

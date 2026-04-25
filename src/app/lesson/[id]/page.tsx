@@ -5,8 +5,7 @@ import { useRouter } from 'next/navigation'
 import LessonStepper from '@/components/lesson/LessonStepper'
 import type { FullLesson, StepResult } from '@/types'
 
-// In production, fetch from Supabase based on lesson id
-// For now, load sample data
+import { getLessonById } from '@/data/lessons/registry'
 import sampleLesson from '@/data/sample-lesson.json'
 
 interface Props {
@@ -19,9 +18,9 @@ export default function LessonPage({ params }: Props) {
   const [loading, setLoading]  = useState(true)
 
   useEffect(() => {
-    // TODO: replace with Supabase fetch
-    // const { data } = await supabase.from('lessons').select(`*, lesson_steps(*)`).eq('id', params.id).single()
-    setLesson(sampleLesson as unknown as FullLesson)
+    // Look up lesson in registry first, fall back to sample lesson
+    const found = getLessonById(params.id)
+    setLesson(found ?? (sampleLesson as unknown as FullLesson))
     setLoading(false)
   }, [params.id])
 
