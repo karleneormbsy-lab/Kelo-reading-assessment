@@ -5,9 +5,9 @@ import { useCallback, useRef, useState } from 'react'
 export type AudioSpeed = 'slow' | 'normal' | 'fast'
 
 const SPEED_MAP: Record<AudioSpeed, number> = {
-  slow:   0.55,
-  normal: 0.85,
-  fast:   1.1,
+  slow:   0.75,
+  normal: 1.1,
+  fast:   1.6,
 }
 
 interface UseAudioOptions {
