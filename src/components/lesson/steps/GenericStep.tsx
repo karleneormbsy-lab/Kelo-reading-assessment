@@ -15,10 +15,30 @@ export default function GenericStep({ step, onComplete }: Props) {
   const [submitted, setSubmitted] = useState(false)
   const content = step.content
 
+  // Map graphemes to TTS strings that produce the correct phoneme sound
+  const PHONEME_SPEAK: Record<string, string> = {
+    'sh': 'shhhh', 'ch': 'chhhh', 'th': 'thhh', 'wh': 'whhh',
+    'ph': 'ffff',  'ck': 'k',     'ng': 'nng',   'qu': 'kw',
+    'ff': 'fff',   'll': 'lll',   'ss': 'sss',
+    'ai': 'ayy',   'ay': 'ayy',   'ea': 'eee',   'ee': 'eee',
+    'oa': 'ohh',   'ow': 'ohh',   'oo': 'ooo',
+    'a': 'aaa',    'e': 'ehh',    'i': 'ih',
+    'o': 'aww',    'u': 'uh',
+  }
+
   const speak = (text: string) => {
     window.speechSynthesis.cancel()
     const utt = new SpeechSynthesisUtterance(text)
     utt.rate  = 0.85
+    window.speechSynthesis.speak(utt)
+  }
+
+  const speakPhoneme = (grapheme: string) => {
+    window.speechSynthesis.cancel()
+    const pronunciation = PHONEME_SPEAK[grapheme.toLowerCase()] ?? grapheme
+    const utt = new SpeechSynthesisUtterance(pronunciation)
+    utt.rate  = 0.65
+    utt.pitch = 1.1
     window.speechSynthesis.speak(utt)
   }
 
@@ -113,12 +133,11 @@ export default function GenericStep({ step, onComplete }: Props) {
                 <span className="text-gray-500 text-sm font-medium">{i + 1}.</span>
                 <button
                   onClick={() => {
-                    // For sound dictation: speak the phoneme sound (the answer).
-                    // For sentence/spelling dictation: read the prompt text, stripping slashes.
-                    const toSpeak = content.type === 'sound_dictation'
-                      ? item.answer.replace(/\//g, '')
-                      : item.prompt.replace(/\//g, '')
-                    speak(toSpeak)
+                    if (content.type === 'sound_dictation') {
+                      speakPhoneme(item.answer.replace(/\//g, ''))
+                    } else {
+                      speak(item.prompt.replace(/\//g, ''))
+                    }
                   }}
                   className="flex items-center gap-2 px-3 py-1.5 bg-blue-100 hover:bg-blue-200 text-blue-700 rounded-full text-sm font-medium transition-colors"
                 >
