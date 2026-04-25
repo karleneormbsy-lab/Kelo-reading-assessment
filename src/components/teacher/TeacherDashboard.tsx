@@ -102,7 +102,7 @@ export default function TeacherDashboard() {
                   <XAxis dataKey="lesson" tick={{ fontSize: 12 }} />
                   <YAxis domain={[0, 100]} tick={{ fontSize: 12 }} />
                   <Tooltip />
-                  <Bar dataKey="avg" fill="#3b82f6" radius={[4, 4, 0, 0]} />
+                  <Bar dataKey="avg" fill="#9333ea" radius={[4, 4, 0, 0]} />
                 </BarChart>
               </ResponsiveContainer>
             </div>
@@ -205,7 +205,7 @@ export default function TeacherDashboard() {
                 <XAxis dataKey="week" />
                 <YAxis label={{ value: 'WCPM', angle: -90, position: 'insideLeft' }} />
                 <Tooltip />
-                <Line type="monotone" dataKey="wcpm" stroke="#3b82f6" strokeWidth={3} dot={{ fill: '#3b82f6', r: 5 }} />
+                <Line type="monotone" dataKey="wcpm" stroke="#9333ea" strokeWidth={3} dot={{ fill: '#9333ea', r: 5 }} />
               </LineChart>
             </ResponsiveContainer>
           </div>

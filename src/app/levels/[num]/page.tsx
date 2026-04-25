@@ -1,6 +1,5 @@
 'use client'
 
-import { use } from 'react'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { ChevronLeft, ChevronRight, Lock, CheckCircle, BookOpen } from 'lucide-react'
@@ -81,9 +80,8 @@ const LEVEL_INFO: Record<number, {
   },
 }
 
-export default function LevelPage({ params }: { params: Promise<{ num: string }> }) {
-  const { num } = use(params)
-  const levelNum = parseInt(num)
+export default function LevelPage({ params }: { params: { num: string } }) {
+  const levelNum = parseInt(params.num)
   const info = LEVEL_INFO[levelNum]
 
   if (!info) {
