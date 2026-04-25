@@ -1,7 +1,6 @@
 'use client'
 
 import { useState } from 'react'
-import Image from 'next/image'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Trash2, CheckCircle } from 'lucide-react'
 import { useAudio } from '@/hooks/useAudio'
@@ -72,7 +71,7 @@ export default function WordBuilder({ content, onComplete }: Props) {
                 >
                   <div className="relative w-14 h-14 rounded-xl overflow-hidden border-2 border-green-300 shadow-sm">
                     {img
-                      ? <Image src={img.url} alt={w} fill className="object-cover" unoptimized />
+                      ? <img src={img.url} alt={w} className="w-full h-full object-cover" />
                       : <div className="absolute inset-0 flex items-center justify-center bg-green-50 text-lg">✓</div>
                     }
                   </div>
@@ -94,7 +93,7 @@ export default function WordBuilder({ content, onComplete }: Props) {
             className="flex flex-col items-center gap-2"
           >
             <div className="relative w-32 h-32 rounded-2xl overflow-hidden border-4 border-green-400 shadow-lg">
-              <Image src={images[justFound]!.url} alt={justFound} fill className="object-cover" unoptimized />
+              <img src={images[justFound]!.url} alt={justFound} className="w-full h-full object-cover" />
             </div>
             <p className="text-xl font-display font-black text-green-600">{justFound}!</p>
           </motion.div>

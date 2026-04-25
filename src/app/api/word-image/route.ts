@@ -9,7 +9,7 @@ const PIXABAY_KEY = process.env.PIXABAY_API_KEY ?? ''
 
 // Manual overrides for common phonics words (guaranteed good images)
 const WORD_IMAGE_OVERRIDES: Record<string, string> = {
-  ship:   'https://images.unsplash.com/photo-1577703836895-9e0bb99bfeb3?w=400&q=80',
+  ship:   'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=80',
   shop:   'https://images.unsplash.com/photo-1580913428735-bd3c269d6a82?w=400&q=80',
   fish:   'https://images.unsplash.com/photo-1522069169874-c58ec4b76be5?w=400&q=80',
   shell:  'https://images.unsplash.com/photo-1519046904884-53103b34b206?w=400&q=80',
